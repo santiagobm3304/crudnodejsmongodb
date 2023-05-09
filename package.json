@@ -1,0 +1,18 @@
+{
+  "name": "cruds7",
+  "version": "1.0.0",
+  "description": "crud con mongodb, node y expres js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "grupo1",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mongoose": "^7.1.0"
+  }
+}

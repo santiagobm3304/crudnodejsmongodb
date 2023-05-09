@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Nodejs y MongoDB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Título</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Comentarios</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.forEach(function(post) { %>
+          <tr>
+            <td scope="row">
+              <%= post._id %>
+            </td>
+            <td scope="row">
+              <%= post.titulo %>
+            </td>
+            <td scope="row">
+              <%= post.descripcion %>
+            </td>
+            <td scope="row">
+              <%= post.categoria %>
+            </td>
+            <td scope="row">
+              <%= post.fecha %>
+            </td>
+            <td scope="row">
+              <%= post.comentarios.length %>
+            </td>
+            <td scope="row">
+              <form action="/post/detalle/<%= post._id %>" method="GET">
+                <button class="btn btn-info" type="submit">Detalles</button>
+              </form>
+              <form action="/post/remove/<%= post._id %>" method="POST">
+                <button class="btn btn-danger" type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
