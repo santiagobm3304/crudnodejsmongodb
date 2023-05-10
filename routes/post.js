@@ -15,12 +15,12 @@ router.get('/detalle/:id', function(req, res) {
     controller.detail(req, res);
 });
 
-router.post('/update/:id', function(req, res) {
+router.post('/update', function(req, res) {
     controller.update(req, res);
 });
 
 router.get('/remove/:id', function(req, res) {
     controller.delete(req, res);
-  });
+});
 
 module.exports = router;

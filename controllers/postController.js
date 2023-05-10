@@ -41,7 +41,7 @@ module.exports = {
 
     },
     update: function (req, res) {
-        let val_id = req.params.id;
+        let val_id = req.body.id;
         let datos = {
             titulo: req.body.titulo,
             descripcion: req.body.descripcion,
