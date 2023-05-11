@@ -2,9 +2,9 @@ let model = require("../models/post_model");
 
 module.exports = {
     show: function (req, res) {
-        model.find()
+        model.find({})
             .then(resultados => {
-                res.render('listar', { posts: resultados });
+                res.json(resultados);
             })
             .catch(error => {
                 res.sendStatus(500);
@@ -15,7 +15,8 @@ module.exports = {
         let val_id = req.params.id;
         model.findOne({ _id: val_id })
             .then(resultados => {
-                res.render('detalle', { posts: resultados });
+                console.log(val_id);
+                res.json(resultados);
             })
             .catch(error => {
                 res.sendStatus(500);
@@ -25,11 +26,11 @@ module.exports = {
     },
     create: function (req, res) {
         let obj = new model;
+        obj._id = req.body._id;
         obj.titulo = req.body.titulo;
         obj.descripcion = req.body.descripcion;
         obj.categoria = req.body.categoria;
         obj.fecha = req.body.fecha;
-        obj.comentarios = req.body.comentarios;
         obj.save()
             .then(newData => {
                 res.json(newData);
@@ -46,8 +47,7 @@ module.exports = {
             titulo: req.body.titulo,
             descripcion: req.body.descripcion,
             categoria: req.body.categoria,
-            fecha: req.body.fecha,
-            comentarios: req.body.comentarios,
+            fecha: req.body.fecha
         };
         model.findOneAndUpdate({ _id: val_id }, datos)
             .then(newData => {
@@ -60,14 +60,14 @@ module.exports = {
     },
     delete: function (req, res) {
         let val_id = req.params.id
-        model.deleteOne({_id:val_id})
-            .then( estado => {
+        model.deleteOne({ _id: val_id })
+            .then(estado => {
                 res.sendStatus(200);
                 console.log(estado);
             }) 
             .catch( error => {
                 console.log(error);
                 res.sendStatus(500);
-            });
-    }
+           });
+    } 
 }; 
